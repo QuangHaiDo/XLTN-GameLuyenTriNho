@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Main">
+   <children>
+      <Pane layoutX="605.0" prefHeight="600.0" prefWidth="258.0">
+         <children>
+            <TextField fx:id="answeringTextField" layoutX="14.0" layoutY="215.0" prefHeight="25.0" prefWidth="184.0" promptText="Answer" />
+            <Button fx:id="okButton" layoutX="211.0" layoutY="215.0" mnemonicParsing="false" onAction="#checkAnswerOnClick" text="OK" />
+            <Button fx:id="micOnButton" layoutX="39.0" layoutY="255.0" mnemonicParsing="false" onAction="#micOn" text="Mic on" />
+            <Button fx:id="micOffButton" layoutX="137.0" layoutY="255.0" mnemonicParsing="false" onAction="#micOff" text="Mic off" />
+            <Text fx:id="showScore" layoutX="30.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="198.13671875">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Text>
+            <Text fx:id="dunghaysai" layoutX="87.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="99.13671875">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Text>
+            <Button fx:id="startButton" layoutX="99.0" layoutY="30.0" mnemonicParsing="false" onAction="#running" text="Start Game" />
+         </children>
+      </Pane>
+      <Pane layoutY="135.0" prefHeight="465.0" prefWidth="619.0">
+         <children>
+            <FlowPane fx:id="desk" layoutY="-5.0" prefHeight="475.0" prefWidth="625.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="101.0" prefHeight="134.0" prefWidth="417.0">
+         <children>
+            <Text layoutX="6.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lá ở vị trí: ">
+               <font>
+                  <Font size="60.0" />
+               </font>
+            </Text>
+            <Text fx:id="textCardAt" layoutX="272.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="60.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
