@@ -36,6 +36,8 @@ public class Main extends Application {
 
     @FXML
     void initialize(){
+        showScore.setText("");
+        dunghaysai.setText("");
         cardList.generateCardList(score+1);
         showAllCard();
         for (int i = 0; i < score + 1; i++) {
