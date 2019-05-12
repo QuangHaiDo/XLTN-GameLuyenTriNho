@@ -22,12 +22,12 @@
                   <Font size="50.0" />
                </font>
             </Text>
-            <Text fx:id="dunghaysai" layoutX="87.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="99.13671875">
+            <Text fx:id="dunghaysai" layoutX="45.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="184.0">
                <font>
                   <Font size="50.0" />
                </font>
             </Text>
-            <Button fx:id="startButton" layoutX="99.0" layoutY="30.0" mnemonicParsing="false" onAction="#running" text="Start Game" />
+            <Button fx:id="startButton" layoutX="99.0" layoutY="30.0" mnemonicParsing="false" onAction="#iRemembered" text="Toi Nho Roi" />
          </children>
       </Pane>
       <Pane layoutY="135.0" prefHeight="465.0" prefWidth="619.0">

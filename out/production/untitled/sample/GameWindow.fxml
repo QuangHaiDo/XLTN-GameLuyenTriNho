@@ -27,7 +27,7 @@
                   <Font size="50.0" />
                </font>
             </Text>
-            <Button fx:id="startButton" layoutX="99.0" layoutY="30.0" mnemonicParsing="false" onAction="#running" text="Start Game" />
+            <Button fx:id="startButton" layoutX="99.0" layoutY="30.0" mnemonicParsing="false" onAction="#iRemembered" text="Toi Nho Roi" />
          </children>
       </Pane>
       <Pane layoutY="135.0" prefHeight="465.0" prefWidth="619.0">

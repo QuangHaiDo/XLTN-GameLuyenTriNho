@@ -3,6 +3,7 @@ package sample;
 import Game.GamePlay;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -32,19 +33,23 @@ public class Main extends Application {
     private FlowPane desk;
     @FXML
     private Text dunghaysai;
-    /*
+
     @FXML
     void initialize(){
         cardList.generateCardList(score+1);
         showAllCard();
-        textCardAt.setText("1");
-    }*/
+        for (int i = 0; i < score + 1; i++) {
+            arr.add(i);
+        }
+        Collections.shuffle(arr);
+    }
 
     CardList cardList = new CardList();
     int score = 0;
+    ArrayList<Integer> arr = new ArrayList<Integer>();
     String playerAnswer;
     Boolean running = true;
-
+    Boolean isUserClick = false;
 
     public void micOn(ActionEvent event){
         System.out.println("Clicked!");
@@ -56,91 +61,99 @@ public class Main extends Application {
     }
 
     public void showAllCard(){
+        this.desk.getChildren().clear();
         for (Card c:cardList.getList()){
             this.desk.getChildren().add(c);
             System.out.println(c.toString());
         }
     }
 
-    public void checkAnswer(Card c, String playerAnswer){
-        if(playerAnswer.indexOf(c.getValue().toString())>-1
-                && playerAnswer.indexOf(c.getSuit().toString())>-1
-                &&playerAnswer.indexOf(c.getColor().toString())>-1) {
-            System.out.println("dung");
-            score++;
-            running();
-        }
-        else {
-            System.out.println("Sai");
-            running =!running;
-        }
-
+    public void iRemembered(){
+        textCardAt.setText(arr.get(0)+"");
+        desk.setVisible(false);
     }
 
     public void checkAnswerOnClick(ActionEvent event){
-        playerAnswer = answeringTextField.getText();
-        /*
-        if(playerAnswer.indexOf(cardList.getList().get(0).getValue().toString())>-1
-        && playerAnswer.indexOf(cardList.getList().get(0).getSuit().toString())>-1
-        &&playerAnswer.indexOf(cardList.getList().get(0).getColor().toString())>-1) {
-            System.out.println("dung");
-            score++;
-            running();
+        if (desk.isVisible()){
+
+        } else {
+            playerAnswer = answeringTextField.getText();
+            int cardAt = arr.get(0);
+            if (playerAnswer.indexOf(cardList.getList().get(cardAt).getValue().toString()) > -1
+                    && playerAnswer.indexOf(cardList.getList().get(cardAt).getSuit().toString()) > -1
+                    && playerAnswer.indexOf(cardList.getList().get(cardAt).getColor().toString()) > -1) {
+                System.out.println("dung");
+                dunghaysai.setText("dung");
+                score++;
+                answeringTextField.clear();
+                textCardAt.setText("");
+                running();
+            } else {
+                System.out.println("Sai");
+                System.exit(0);
+            }
         }
-        else {
-            System.out.println("Sai");
-            running =!running;
-        }*/
-        //answeringTextField.clear();
     }
 
     public void running(){
-        while(true) {
-
             /**
              *  Generate new cardList, number of card = score +1
              */
             cardList.generateCardList(score + 1);
             showAllCard();
 
+            showScore.setText(score+"");
+
             /**
              * Choose card to open with arr element order
              */
-            ArrayList<Integer> arr = new ArrayList<Integer>();
+
+            //ArrayList<Integer> arr = new ArrayList<Integer>();
+            arr.clear();
             for (int i = 0; i < score + 1; i++) {
                 arr.add(i);
             }
-
             Collections.shuffle(arr); //after this, arr elements have a random order
+            //textCardAt.setText(arr.get(0)+"");
+            System.out.println(arr.get(0));
 
+        desk.setVisible(true);
+            /**
             for (int e : arr) {
-                System.out.println("Card at:" + e+1);
+                System.out.println("Card at:" + e);
                 textCardAt.setText(e + "");
                 /**
                  * player answering
-                 */
+                 *
+
 
                 Card _this = cardList.getList().get(e);
 
-                if (playerAnswer.indexOf(_this.getValue().toString()) > -1 &&
-                        playerAnswer.indexOf(_this.getSuit().toString()) > -1 &&
-                        playerAnswer.indexOf(_this.getColor().toString()) > -1
-                ) {
-                    System.out.println("Correct !!!");
-                    dunghaysai.setText("Dung");
-                } else {
+                okButton.setOnMouseClicked(event -> {
+                    playerAnswer = answeringTextField.getText();
+                    if (playerAnswer.indexOf(_this.getValue().toString())>-1
+                            && playerAnswer.indexOf(_this.getSuit().toString())>-1
+                            &&playerAnswer.indexOf(_this.getColor().toString())>-1
+                    ) {
+                        System.out.println("Correct !!!");
+                        dunghaysai.setText("Dung");
+                    } else {
 
-                    /** Xu ly sai va thoat game*/
+                        /** Xu ly sai va thoat game*
 
-                    System.out.println("Sai !!!");
-                    System.out.println("Score: " + score);
-                    System.exit(0);
+                        System.out.println("Sai !!!");
+                        System.out.println("Score: " + score);
+                        System.exit(0);
 
-                }
+                    }
+                });
+
+
+
             }
 
-            score++;
-        }
+            score++;*/
+
 
     }
 
@@ -151,6 +164,7 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         primaryStage.setTitle("Game luyện trí nhớ");
         primaryStage.setScene(scene);
+        //running();
         primaryStage.show();
     }
 
