@@ -6,6 +6,7 @@ public enum Color {
     đỏ,
     đen,
     vàng,
+    tím,
     xanh;
     /** Get a random color
      * @return Color
@@ -21,6 +22,7 @@ public enum Color {
             case "đen": return javafx.scene.paint.Color.BLACK;
             case "vàng": return javafx.scene.paint.Color.YELLOW;
             case "xanh": return javafx.scene.paint.Color.BLUE;
+            case "tím": return javafx.scene.paint.Color.PURPLE;
             default: return javafx.scene.paint.Color.BLACK;
         }
     }

@@ -1,14 +1,10 @@
 package sample;
 
-import Objects.ResultOfSpeechAPI;
 import com.darkprograms.speech.microphone.Microphone;
 import com.darkprograms.speech.recognizer.GSpeechDuplex;
 import com.darkprograms.speech.recognizer.GSpeechResponseListener;
 import com.darkprograms.speech.recognizer.GoogleResponse;
-import com.darkprograms.speech.translator.GoogleTranslate;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import net.sourceforge.javaflacencoder.FLACFileWriter;
 import javax.sound.sampled.LineUnavailableException;
 import java.io.IOException;

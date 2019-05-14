@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -33,9 +34,12 @@ public class Main extends Application {
     private FlowPane desk;
     @FXML
     private Text dunghaysai;
+    @FXML
+    private Pane answerPane;
 
     @FXML
     void initialize(){
+        answerPane.setVisible(false);
         showScore.setText("");
         dunghaysai.setText("");
         cardList.generateCardList(score+1);
@@ -50,8 +54,6 @@ public class Main extends Application {
     int score = 0;
     ArrayList<Integer> arr = new ArrayList<Integer>();
     String playerAnswer;
-    Boolean running = true;
-    Boolean isUserClick = false;
 
     public void micOn(ActionEvent event){
         System.out.println("Clicked!");
@@ -71,7 +73,9 @@ public class Main extends Application {
     }
 
     public void iRemembered(){
-        textCardAt.setText(arr.get(0)+"");
+        int viTriLaBai = arr.get(0)+1;
+        textCardAt.setText(viTriLaBai+"");
+        answerPane.setVisible(true);
         desk.setVisible(false);
     }
 
@@ -84,8 +88,8 @@ public class Main extends Application {
             if (playerAnswer.indexOf(cardList.getList().get(cardAt).getValue().toString()) > -1
                     && playerAnswer.indexOf(cardList.getList().get(cardAt).getSuit().toString()) > -1
                     && playerAnswer.indexOf(cardList.getList().get(cardAt).getColor().toString()) > -1) {
-                System.out.println("dung");
-                dunghaysai.setText("dung");
+                System.out.println("Đúng");
+                dunghaysai.setText("Đúng");
                 score++;
                 answeringTextField.clear();
                 textCardAt.setText("");
@@ -103,7 +107,7 @@ public class Main extends Application {
              */
             cardList.generateCardList(score + 1);
             showAllCard();
-
+            answerPane.setVisible(false);
             showScore.setText(score+"");
 
             /**
