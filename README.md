@@ -1,2 +1,2 @@
 # XLTN-GameLuyenTriNho
-remember number, suit and color of card
+Ghi nhớ giá trị, chất và màu sắc của chữ trên lá bài
