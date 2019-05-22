@@ -133,7 +133,7 @@ public class Main extends Application {
         dunghaysai.setText("Oh no!");
         desk.setVisible(true);
     }
-    
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("GameWindow.fxml"));
