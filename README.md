@@ -5,3 +5,5 @@ Ghi nhớ giá trị, chất và màu sắc của chữ trên tất cả lá bà
 ![Giao diện chính](/doc/giaodienchinh.png)
 # Giao diện trả lời
 ![Giao diện chính](/doc/traloi.png)
+# Giao diện trả lời sai
+![Giao diện chính](/doc/traloisai.png)
