@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.concurrent.TimeUnit;
 
 public class Main extends Application {
     @FXML
@@ -40,7 +41,7 @@ public class Main extends Application {
     @FXML
     void initialize(){
         answerPane.setVisible(false);
-        showScore.setText("");
+        showScore.setText("0");
         dunghaysai.setText("");
         cardList.generateCardList(score+1);
         showAllCard();
@@ -88,89 +89,57 @@ public class Main extends Application {
             if (playerAnswer.indexOf(cardList.getList().get(cardAt).getValue().toString()) > -1
                     && playerAnswer.indexOf(cardList.getList().get(cardAt).getSuit().toString()) > -1
                     && playerAnswer.indexOf(cardList.getList().get(cardAt).getColor().toString()) > -1) {
-                System.out.println("Đúng");
+                //System.out.println("Đúng");
                 dunghaysai.setText("Đúng");
                 score++;
                 answeringTextField.clear();
                 textCardAt.setText("");
                 running();
             } else {
-                System.out.println("Sai");
-                System.exit(0);
+
+               // Ket thuc tro choi
+                endGame();
             }
         }
     }
 
     public void running(){
-            /**
-             *  Generate new cardList, number of card = score +1
-             */
-            cardList.generateCardList(score + 1);
-            showAllCard();
-            answerPane.setVisible(false);
-            showScore.setText(score+"");
+        /**
+         *  Generate new cardList, number of card = score +1
+         */
+        cardList.generateCardList(score + 1);
+        showAllCard();
+        answerPane.setVisible(false);
+        showScore.setText(score+"");
 
-            /**
-             * Choose card to open with arr element order
-             */
+        /**
+         * Choose card to open with arr element order
+         */
 
-            //ArrayList<Integer> arr = new ArrayList<Integer>();
-            arr.clear();
-            for (int i = 0; i < score + 1; i++) {
-                arr.add(i);
-            }
-            Collections.shuffle(arr); //after this, arr elements have a random order
-            //textCardAt.setText(arr.get(0)+"");
-            System.out.println(arr.get(0));
+        arr.clear();
+        for (int i = 0; i < score + 1; i++) {
+            arr.add(i);
+        }
+        Collections.shuffle(arr); //after this, arr elements have a random order
+
+        //System.out.println(arr.get(0));
 
         desk.setVisible(true);
-            /**
-            for (int e : arr) {
-                System.out.println("Card at:" + e);
-                textCardAt.setText(e + "");
-                /**
-                 * player answering
-                 *
-
-
-                Card _this = cardList.getList().get(e);
-
-                okButton.setOnMouseClicked(event -> {
-                    playerAnswer = answeringTextField.getText();
-                    if (playerAnswer.indexOf(_this.getValue().toString())>-1
-                            && playerAnswer.indexOf(_this.getSuit().toString())>-1
-                            &&playerAnswer.indexOf(_this.getColor().toString())>-1
-                    ) {
-                        System.out.println("Correct !!!");
-                        dunghaysai.setText("Dung");
-                    } else {
-
-                        /** Xu ly sai va thoat game*
-
-                        System.out.println("Sai !!!");
-                        System.out.println("Score: " + score);
-                        System.exit(0);
-
-                    }
-                });
-
-
-
-            }
-
-            score++;*/
-
 
     }
 
-
+    public void endGame(){
+        //System.out.println("Sai");
+        dunghaysai.setText("Oh no!");
+        desk.setVisible(true);
+    }
+    
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("GameWindow.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("Game luyện trí nhớ");
         primaryStage.setScene(scene);
-        //running();
         primaryStage.show();
     }
 
