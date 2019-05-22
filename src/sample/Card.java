@@ -37,16 +37,16 @@ public class Card extends Parent {
         Rectangle bg = new Rectangle(CARD_WIDTH, CARD_HEIGHT);
         bg.setArcWidth(20);
         bg.setArcHeight(20);
-        bg.setFill(javafx.scene.paint.Color.WHITE);
+        bg.setFill(javafx.scene.paint.Color.GRAY);
 
         Text value1 = new Text(value.toString());
-        value1.setFont(Font.font(18));
+        value1.setFont(Font.font(20));
         value1.setX(CARD_WIDTH - value1.getLayoutBounds().getWidth() - 10);
         value1.setY(value1.getLayoutBounds().getHeight());
         value1.setFill(color.getColor(color.toString()));
 
         Text suit1 = new Text(suit.toString());
-        suit1.setFont(Font.font(18));
+        suit1.setFont(Font.font(20));
         suit1.setX(10);
         suit1.setY(CARD_HEIGHT - 10);
         suit1.setFill(color.getColor(color.toString()));
