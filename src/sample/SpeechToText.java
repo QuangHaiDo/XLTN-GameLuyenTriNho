@@ -24,7 +24,7 @@ public class SpeechToText  {
         duplex.addResponseListener(new GSpeechResponseListener() {
             public void onResponse(GoogleResponse googleResponse) {
                 output = googleResponse.getResponse();
-                System.out.println("trong startSpeech...:"+ output);
+                System.out.println("trong startSpeech...: "+ output);
                 search.setText(output);
             }
         });
