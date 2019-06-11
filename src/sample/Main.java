@@ -20,6 +20,8 @@ public class Main extends Application {
     @FXML
     private Button okButton;
     @FXML
+    private Button startButton;
+    @FXML
     private Text showScore;
     @FXML
     private Button stopRecordButton;
@@ -35,10 +37,16 @@ public class Main extends Application {
     private Pane answerPane;
 
     @FXML
+    private Button exitButton;
+
+
+    // khoi tao cho game
+    @FXML
     void initialize(){
         answerPane.setVisible(false);
         showScore.setText("0");
         dunghaysai.setText("");
+        exitButton.setVisible(false);
         cardList.generateCardList(score+1);
         showAllCard();
         for (int i = 0; i < score + 1; i++) {
@@ -52,6 +60,10 @@ public class Main extends Application {
     ArrayList<Integer> arr = new ArrayList<Integer>();
     String playerAnswer;
 
+    /**
+     * bat/tat mic de nhan dang tieng noi
+     * @param event
+     */
     public void micOn(ActionEvent event){
         System.out.println("Clicked!");
         SpeechToText.startSpeechRecognition(answeringTextField,"vi-VN");
@@ -61,6 +73,8 @@ public class Main extends Application {
         SpeechToText.stopSpeechRecognition();
     }
 
+
+    // hien thi tat ca la bai tren ban
     public void showAllCard(){
         this.desk.getChildren().clear();
         for (Card c:cardList.getList()){
@@ -69,6 +83,9 @@ public class Main extends Application {
         }
     }
 
+    /**
+     * khi bam vao nut "toi nho roi", thi ham nay se xu ly
+     */
     public void iRemembered(){
         int viTriLaBai = arr.get(0)+1;
         textCardAt.setText(viTriLaBai+"");
@@ -76,6 +93,10 @@ public class Main extends Application {
         desk.setVisible(false);
     }
 
+    /**
+     * Kiem tra ket qua khi bam nut "OK" hoac go Enter
+     * @param event
+     */
     public void checkAnswerOnClick(ActionEvent event){
         if (desk.isVisible()){
 
@@ -85,7 +106,6 @@ public class Main extends Application {
             if (playerAnswer.indexOf(cardList.getList().get(cardAt).getValue().toString()) > -1
                     && playerAnswer.indexOf(cardList.getList().get(cardAt).getSuit().toString()) > -1
                     && playerAnswer.indexOf(cardList.getList().get(cardAt).getColor().toString()) > -1) {
-                //System.out.println("Đúng");
                 dunghaysai.setText("Đúng");
                 score++;
                 answeringTextField.clear();
@@ -99,6 +119,10 @@ public class Main extends Application {
         }
     }
 
+    /**
+     * Ham chay chinh,
+     */
+
     public void running(){
         /**
          *  Generate new cardList, number of card = score +1
@@ -106,6 +130,7 @@ public class Main extends Application {
         cardList.generateCardList(score + 1);
         showAllCard();
         answerPane.setVisible(false);
+        dunghaysai.setVisible(false);
         showScore.setText(score+"");
 
         /**
@@ -118,16 +143,25 @@ public class Main extends Application {
         }
         Collections.shuffle(arr); //after this, arr elements have a random order
 
-        //System.out.println(arr.get(0));
-
         desk.setVisible(true);
 
     }
 
+    /**
+     * Xu ly ket thuc Game
+     */
     public void endGame(){
-        //System.out.println("Sai");
+        startButton.setVisible(false);
+        answerPane.setVisible(false);
         dunghaysai.setText("Oh no!");
+        dunghaysai.setVisible(true);
+        exitButton.setVisible(true);
         desk.setVisible(true);
+    }
+
+    // bam exit de dong cua so game
+    public void closeGame(){
+        System.exit(0);
     }
 
     @Override
