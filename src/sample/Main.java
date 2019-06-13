@@ -35,16 +35,19 @@ public class Main extends Application {
     private Text dunghaysai;
     @FXML
     private Pane answerPane;
-
     @FXML
     private Button exitButton;
 
+    CardList cardList = new CardList();
+    int score = 20;
+    ArrayList<Integer> arr = new ArrayList<Integer>();
+    String playerAnswer;
 
     // khoi tao cho game
     @FXML
     void initialize(){
         answerPane.setVisible(false);
-        showScore.setText("0");
+        showScore.setText(score +"");
         dunghaysai.setText("");
         exitButton.setVisible(false);
         cardList.generateCardList(score+1);
@@ -55,10 +58,6 @@ public class Main extends Application {
         Collections.shuffle(arr);
     }
 
-    CardList cardList = new CardList();
-    int score = 0;
-    ArrayList<Integer> arr = new ArrayList<Integer>();
-    String playerAnswer;
 
     /**
      * bat/tat mic de nhan dang tieng noi

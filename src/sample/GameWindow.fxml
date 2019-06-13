@@ -21,11 +21,11 @@
                </font></Button>
          </children>
       </Pane>
-      <Pane layoutY="135.0" prefHeight="465.0" prefWidth="619.0">
-         <children>
-            <FlowPane fx:id="desk" layoutX="7.0" layoutY="-17.0" prefHeight="471.0" prefWidth="599.0" style="-fx-background-color: white; -fx-background-radius: 10;" />
-         </children>
-      </Pane>
+      <ScrollPane layoutY="117.0" prefHeight="471.0" prefViewportHeight="465.0" prefViewportWidth="619.0" prefWidth="613.0">
+         <content>
+            <FlowPane fx:id="desk" alignment="TOP_CENTER" prefHeight="494.0" prefWidth="599.0" style="-fx-background-color: white; -fx-background-radius: 10;" />
+         </content>
+      </ScrollPane>
       <Pane layoutX="101.0" prefHeight="134.0" prefWidth="417.0">
          <children>
             <Text layoutX="6.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lá ở vị trí: ">
