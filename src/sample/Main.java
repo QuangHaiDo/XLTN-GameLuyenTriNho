@@ -39,7 +39,7 @@ public class Main extends Application {
     private Button exitButton;
 
     CardList cardList = new CardList();
-    int score = 20;
+    int score = 0;
     ArrayList<Integer> arr = new ArrayList<Integer>();
     String playerAnswer;
 
